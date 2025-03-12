@@ -40,6 +40,11 @@ class User(AbstractBaseUser, PermissionsMixin, AbstractBaseModel):
 
     is_active = models.BooleanField(default=True, verbose_name=_("Is Active"))
 
+    is_profile_complete = models.BooleanField(
+        verbose_name=_("Is Profile Complete"),
+        default=False
+    )
+
     date_joined = models.DateTimeField(default=timezone.now)
 
     type = models.ForeignKey(
@@ -85,8 +90,44 @@ class User(AbstractBaseUser, PermissionsMixin, AbstractBaseModel):
         #     )
         # ]
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.full_name
+
+    def update_profile_status(self) -> None:
+        self.is_profile_complete = True
+        self.save()
+
+
+class ArtisanProfile(AbstractBaseModel):
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='artisan_profile',
+        verbose_name=_("User")
+    )
+
+    bio = models.TextField(
+        verbose_name=_("Bio"),
+        blank=True,
+        null=True
+    )
+
+    profile_picture = models.ImageField(
+        verbose_name=_("Profile Picture"),
+        upload_to='mediafiles/artisan_profiles/',
+        blank=True,
+        null=True
+    )
+
+    shop_name = models.CharField(
+        verbose_name=_("Shop Name"),
+        max_length=100
+    )
+
+    location = models.CharField(
+        verbose_name=_("Location"),
+        max_length=100
+    )
 
 
 class UserPreferences(AbstractBaseModel):

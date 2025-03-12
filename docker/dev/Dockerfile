@@ -18,13 +18,11 @@ ENV PYTHONUNBUFFERED=1
 ENV APP_HOME=/usr/src/app
 
 
-
 # Set environment variables for Poetry installation
 ENV POETRY_VERSION=1.8.4 \
     POETRY_HOME="/opt/poetry" \
     POETRY_VIRTUALENVS_CREATE=false \
     POETRY_NO_INTERACTION=1
-
 
 # Install Poetry
 RUN curl -sSL https://install.python-poetry.org | python3 -
@@ -35,11 +33,16 @@ ENV PATH="${POETRY_HOME}/bin:$PATH"
 # Set the working directory
 WORKDIR $APP_HOME
 
-# Create a user to run the application
-RUN addgroup --system app && adduser --system --group app
+# Create a user to run the application (matching local user)
+ARG USER_ID
+ARG GROUP_ID
+
+RUN addgroup --system --gid $GROUP_ID app && \
+    adduser --system --uid $USER_ID --gid $GROUP_ID app
 
 # Create the static and media files directories
 RUN mkdir $APP_HOME/staticfiles
+
 RUN mkdir $APP_HOME/mediafiles
 
 # Copy the lockfile and pyproject file first to leverage Docker layer caching
@@ -55,7 +58,11 @@ RUN poetry add psycopg2
 # to protect reinstalling dependencies in every code change
 COPY . .
 
-# change the ownership all the files to the app user
+
+# Ensure correct file permissions
 RUN chown -R app:app $APP_HOME
+
+# Switch to the new user
+USER app
 
 EXPOSE 8000
