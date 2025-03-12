@@ -27,11 +27,15 @@ services:
     build:
       context: .
       dockerfile: ./docker/dev/Dockerfile
+      args:
+        USER_ID: ${UID}
+        GROUP_ID: ${GID}
     image: artisan:dev
     ports:
       - 8000:8000
     volumes:
       - ./:/usr/src/app
+    user: "${UID}:${GID}"
     command: python manage.py runserver 0.0.0.0:8000
     env_file:
       - .env
