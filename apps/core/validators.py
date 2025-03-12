@@ -30,3 +30,20 @@ def validate_email(email):
 
 
 def validate_password(password):
+    """Validates a password strength"""
+    # Minimum eight characters, at least one uppercase letter,
+    # one lowercase letter, one number and one special character
+    # refer here https://stackoverflow.com/a/21456918
+    password_regex = (
+        r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+    )
+
+    if not re.match(password_regex, password):
+        raise serializers.ValidationError(
+            _(
+                "Password strength didn't match. "
+                "It should contain a minimum of eight characters, "
+                "at least one uppercase letter, one lowercase letter, "
+                "one number, and one special character."
+            )
+        )
