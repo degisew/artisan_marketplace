@@ -1,0 +1,35 @@
+[tool.poetry]
+package-mode = false
+name = "artisan_marketplace"
+version = "0.1.0"
+description = ""
+authors = ["Degisew <jegisew21@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "^5.1.6"
+djangorestframework = "^3.15.2"
+django-environ = "^0.12.0"
+djangorestframework-simplejwt = "^5.4.0"
+django-filter = "^25.1"
+drf-access-policy = "^1.5.0"
+django-cors-headers = "^4.7.0"
+drf-standardized-errors = "^0.14.1"
+phonenumbers = "^8.13.55"
+
+
+[tool.poetry.group.development.dependencies]
+pytest = "^8.3.4"
+pytest-django = "^4.10.0"
+factory-boy = "^3.3.3"
+drf-spectacular = "^0.28.0"
+coverage = "^7.6.12"
+pytest-cov = "^6.0.0"
+
+[tool.poetry.group.production.dependencies]
+gunicorn = "^23.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
