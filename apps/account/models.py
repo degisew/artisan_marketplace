@@ -34,6 +34,11 @@ class User(AbstractBaseUser, PermissionsMixin, AbstractBaseModel):
         max_length=15, blank=True, verbose_name=_("Phone Number")
     )
 
+    password = models.CharField(
+        verbose_name=_("Password"),
+        max_length=200
+    )
+
     is_staff = models.BooleanField(default=False, verbose_name=_("Is Staff"))
 
     is_superuser = models.BooleanField(default=False, verbose_name=_("Is SuperUser"))
@@ -47,14 +52,14 @@ class User(AbstractBaseUser, PermissionsMixin, AbstractBaseModel):
 
     date_joined = models.DateTimeField(default=timezone.now)
 
-    type = models.ForeignKey(
-        DataLookup,
-        on_delete=models.RESTRICT,
-        null=True,
-        blank=True,
-        related_name="+",
-        limit_choices_to={"type": "user_type"},
-    )
+    # type = models.ForeignKey(
+    #     DataLookup,
+    #     on_delete=models.RESTRICT,
+    #     null=True,
+    #     blank=True,
+    #     related_name="+",
+    #     limit_choices_to={"type": "user_type"},
+    # )
 
     role = models.ForeignKey(
         Role, null=True, blank=True, on_delete=models.RESTRICT, related_name="+"

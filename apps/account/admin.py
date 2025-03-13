@@ -58,8 +58,15 @@ class UserAdmin(BaseUserAdmin):
     filter_horizontal = []
 
 
-admin.site.register(Role)
-admin.site.register(UserPreferences)
+@admin.register(Role)
+class RoleAdmin(admin.ModelAdmin):
+    exclude = ["deleted_at"]
+
+
+@admin.register(UserPreferences)
+class UserPreferencesAdmin(admin.ModelAdmin):
+    exclude = ["deleted_at"]
+
 
 # since we're not using Django's built-in permissions,
 # unregister the Group model from admin.

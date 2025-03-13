@@ -29,12 +29,13 @@ from drf_spectacular.views import (
 
 api_v1_patterns = [
     path("account/", include("apps.account.urls")),
-    path("core/", include("apps.core.urls"))
+    path("core/", include("apps.core.urls")),
+    path("store/", include("apps.store.urls")),
 ]
 
 urlpatterns = [
     path(f"{settings.ADMIN_URL}", admin.site.urls),
-    # path("api/v1/", include(api_v1_patterns)),
+    path("api/v1/", include(api_v1_patterns)),
     path('api/v1/auth/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/v1/auth/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]

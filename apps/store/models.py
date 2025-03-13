@@ -130,9 +130,9 @@ class Product(AbstractBaseModel):
         verbose_name_plural: str = "Products"
         db_table: str = "product"
 
-    def update_price(self, price, is_for_sale):
-        self.price = price
-        self.save()
+    # def update_price(self, price, is_for_sale):
+    #     self.price = price
+    #     self.save()
 
     def __str__(self) -> str:
         return self.name
