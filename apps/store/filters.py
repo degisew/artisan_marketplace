@@ -6,7 +6,7 @@ from apps.store.models import Product, CategoryAttribute
 
 
 class CategoryAttributeFilter(FilterSet):
-    category = filters.UUIDFilter(field_name='product_category')
+    category = filters.UUIDFilter(field_name='category')
 
     class Meta:
         model = CategoryAttribute

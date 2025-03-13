@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
+from apps.account.serializers import UserSerializer
 from apps.core.models import DataLookup
 from apps.core.serializers import DataTypeFormTypeResponseSerializer
 from apps.store.models import (
@@ -14,18 +15,17 @@ from apps.store.services import PriceSetService
 User = get_user_model()
 
 
-class CategorySerializer(serializers.ModelSerializer):
+class CategoryResponseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = [
+            'id',
             'name',
-            'value',
             'slug'
         ]
 
 
 class CategoryAttributeResponseSerializer(serializers.ModelSerializer):
-    category = CategorySerializer()
     field_type = DataTypeFormTypeResponseSerializer()
     form_type = DataTypeFormTypeResponseSerializer()
 
@@ -33,7 +33,6 @@ class CategoryAttributeResponseSerializer(serializers.ModelSerializer):
         model = CategoryAttribute
         fields = [
             'id',
-            'category',
             'field_name',
             'field_type',
             'form_type',
@@ -66,36 +65,26 @@ class ProductSerializer(serializers.ModelSerializer):
         ]
 
 
-class ProductPriceSetSerializer(serializers.Serializer):
+class ProductCreationSerializer(serializers.Serializer):
     product = ProductSerializer()
-    # category = serializers.PrimaryKeyRelatedField(
-    #     queryset=Category.objects.all()
-    # )
-
-    # available_colors = serializers.PrimaryKeyRelatedField(
-    #     queryset=DataLookup.objects.filter(
-    #         type="product_color_type"
-    #     )
-    # )
-
-    # name = serializers.CharField()
-
-    # price = serializers.DecimalField(max_digits=10, decimal_places=2)
-
-    # quantity = serializers.IntegerField()
-
-    # material = serializers.CharField()
-
-    # description = serializers.CharField()
-
     attributes = serializers.DictField(
         child=serializers.JSONField()
     )
 
-    # def validate(self, attrs):
-
     def create(self, validated_data):
-        return PriceSetService.create_product(validated_data)
+        user = self.context["request"].user
+        return PriceSetService.create_product(user, validated_data)
+
+    def to_representation(self, instance):
+        product = instance.get("product")
+        attributes = instance.get("attributes")
+
+        product_data = ProductResponseSerializer(product).data
+
+        return {
+            **product_data,
+            **attributes
+        }
 
 
 class ProductAttributeResponseSerializer(serializers.ModelSerializer):
@@ -109,7 +98,8 @@ class ProductAttributeResponseSerializer(serializers.ModelSerializer):
 
 
 class ProductResponseSerializer(serializers.ModelSerializer):
-    category = CategorySerializer()
+    category = CategoryResponseSerializer()
+    artisan = UserSerializer()
 
     class Meta:
         model = Product

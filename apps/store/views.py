@@ -12,9 +12,9 @@ from apps.store.models import (
 from apps.store.filters import CategoryAttributeFilter, ProductFilter
 from rest_framework.permissions import AllowAny
 from apps.store.serializers import (
-    CategorySerializer,
+    CategoryResponseSerializer,
     ProductResponseSerializer,
-    ProductPriceSetSerializer,
+    ProductCreationSerializer,
     CategoryAttributeResponseSerializer
 )
 
@@ -22,7 +22,7 @@ from apps.store.serializers import (
 class CategoryViewSet(AbstractModelViewSet):
     permission_classes = [AllowAny]
     http_method_names = ["get"]
-    serializer_class = CategorySerializer
+    serializer_class = CategoryResponseSerializer
     queryset = Category.objects.all()
 
 
@@ -46,5 +46,5 @@ class ProductViewSet(AbstractModelViewSet):
 
 class CreateProductViewSet(CreateModelMixin, GenericViewSet):
     permission_classes = [AllowAny]
-    serializer_class = ProductPriceSetSerializer
+    serializer_class = ProductCreationSerializer
     queryset = None
