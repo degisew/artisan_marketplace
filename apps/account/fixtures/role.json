@@ -1,0 +1,35 @@
+[
+    {
+        "model": "account.role",
+        "pk": "4a340884-1172-413b-b9d5-45ce2393e680",
+        "fields": {
+            "created_at": "2025-03-13T10:41:22.758Z",
+            "updated_at": "2025-03-13T10:41:22.758Z",
+            "deleted_at": null,
+            "name": "Consumer",
+            "code": "consumer"
+        }
+    },
+    {
+        "model": "account.role",
+        "pk": "9d66313c-6269-414f-828b-ba9e761f1408",
+        "fields": {
+            "created_at": "2025-03-13T10:41:31.480Z",
+            "updated_at": "2025-03-13T10:41:31.480Z",
+            "deleted_at": null,
+            "name": "Artisan",
+            "code": "artisan"
+        }
+    },
+    {
+        "model": "account.role",
+        "pk": "d6d0070c-9c53-4643-ad42-a3573f851e18",
+        "fields": {
+            "created_at": "2025-03-13T10:41:03.840Z",
+            "updated_at": "2025-03-13T10:41:03.841Z",
+            "deleted_at": null,
+            "name": "Admin",
+            "code": "admin"
+        }
+    }
+]

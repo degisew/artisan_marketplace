@@ -1,0 +1,272 @@
+[
+    {
+        "model": "core.datalookup",
+        "pk": "110c3c08-b428-4706-988a-ba620fe526f2",
+        "fields": {
+            "created_at": "2025-03-13T18:32:10.368Z",
+            "updated_at": "2025-03-13T18:32:10.368Z",
+            "deleted_at": null,
+            "type": "attribute_form_type",
+            "name": "radio button",
+            "value": "radio",
+            "category": "STORE",
+            "description": "A radio type for radio button form fields.",
+            "index": 1,
+            "is_default": false,
+            "is_active": false,
+            "remark": ""
+        }
+    },
+    {
+        "model": "core.datalookup",
+        "pk": "15796830-71ff-4b53-8d0b-d24823997c12",
+        "fields": {
+            "created_at": "2025-03-13T18:31:34.183Z",
+            "updated_at": "2025-03-13T18:31:34.183Z",
+            "deleted_at": null,
+            "type": "attribute_form_type",
+            "name": "dropdown",
+            "value": "select",
+            "category": "STORE",
+            "description": "A select type for dropdown form fields.",
+            "index": 0,
+            "is_default": false,
+            "is_active": false,
+            "remark": ""
+        }
+    },
+    {
+        "model": "core.datalookup",
+        "pk": "467b89ac-6445-47c8-81a1-4fbd0d1eda7d",
+        "fields": {
+            "created_at": "2025-03-13T18:48:05.335Z",
+            "updated_at": "2025-03-13T18:48:05.335Z",
+            "deleted_at": null,
+            "type": "attribute_form_type",
+            "name": "Text Area",
+            "value": "textarea",
+            "category": "STORE",
+            "description": "A textarea form field.",
+            "index": 5,
+            "is_default": false,
+            "is_active": false,
+            "remark": ""
+        }
+    },
+    {
+        "model": "core.datalookup",
+        "pk": "4c59c788-bebd-42cb-8054-84eac6bbf549",
+        "fields": {
+            "created_at": "2025-03-13T18:42:37.433Z",
+            "updated_at": "2025-03-13T18:42:37.433Z",
+            "deleted_at": null,
+            "type": "attribute_field_type",
+            "name": "Number",
+            "value": "int",
+            "category": "STORE",
+            "description": "A datatype  for INTEGER types.",
+            "index": 1,
+            "is_default": false,
+            "is_active": false,
+            "remark": ""
+        }
+    },
+    {
+        "model": "core.datalookup",
+        "pk": "6092be00-defb-4c35-aee4-ef26a11b49af",
+        "fields": {
+            "created_at": "2025-03-13T18:40:49.927Z",
+            "updated_at": "2025-03-13T18:40:49.927Z",
+            "deleted_at": null,
+            "type": "attribute_form_type",
+            "name": "Number",
+            "value": "number",
+            "category": "STORE",
+            "description": "A number field type for number input form fields.",
+            "index": 4,
+            "is_default": false,
+            "is_active": false,
+            "remark": ""
+        }
+    },
+    {
+        "model": "core.datalookup",
+        "pk": "90dc5f51-6cf2-48be-8f2c-dc7412c2e1cd",
+        "fields": {
+            "created_at": "2025-03-13T10:51:45.588Z",
+            "updated_at": "2025-03-13T10:51:45.588Z",
+            "deleted_at": null,
+            "type": "account_state",
+            "name": "Active",
+            "value": "active",
+            "category": "STATUS",
+            "description": "Indicates that the account is active.",
+            "index": 0,
+            "is_default": true,
+            "is_active": false,
+            "remark": ""
+        }
+    },
+    {
+        "model": "core.datalookup",
+        "pk": "9cf4b4fe-9334-4e8f-a71f-e739c6f80395",
+        "fields": {
+            "created_at": "2025-03-13T19:14:59.501Z",
+            "updated_at": "2025-03-13T19:14:59.501Z",
+            "deleted_at": null,
+            "type": "product_color_type",
+            "name": "Green",
+            "value": "green",
+            "category": "STORE",
+            "description": "a green color choice for the product.",
+            "index": 1,
+            "is_default": false,
+            "is_active": false,
+            "remark": ""
+        }
+    },
+    {
+        "model": "core.datalookup",
+        "pk": "a19a5fec-7b39-4c2c-8d7e-89151bfc2051",
+        "fields": {
+            "created_at": "2025-03-13T19:15:45.724Z",
+            "updated_at": "2025-03-13T19:15:45.724Z",
+            "deleted_at": null,
+            "type": "product_color_type",
+            "name": "Blue",
+            "value": "blue",
+            "category": "STORE",
+            "description": "A blue color choice for the product.",
+            "index": 2,
+            "is_default": false,
+            "is_active": false,
+            "remark": ""
+        }
+    },
+    {
+        "model": "core.datalookup",
+        "pk": "a21a49ae-2e2d-4ebc-9deb-8e6c7e4b2190",
+        "fields": {
+            "created_at": "2025-03-13T10:52:14.772Z",
+            "updated_at": "2025-03-13T10:52:14.772Z",
+            "deleted_at": null,
+            "type": "account_state",
+            "name": "Inactive",
+            "value": "inactive",
+            "category": "STATUS",
+            "description": "Indicates that the account is inactive.",
+            "index": 1,
+            "is_default": false,
+            "is_active": false,
+            "remark": ""
+        }
+    },
+    {
+        "model": "core.datalookup",
+        "pk": "ad0054f9-292e-4715-8ec2-ec04e5a9efac",
+        "fields": {
+            "created_at": "2025-03-13T18:33:41.564Z",
+            "updated_at": "2025-03-13T18:33:41.564Z",
+            "deleted_at": null,
+            "type": "attribute_form_type",
+            "name": "Text",
+            "value": "text",
+            "category": "STORE",
+            "description": "A form field type for text fields.",
+            "index": 3,
+            "is_default": false,
+            "is_active": false,
+            "remark": ""
+        }
+    },
+    {
+        "model": "core.datalookup",
+        "pk": "c2c333d7-b4cc-4f4f-be9a-b2ee08527946",
+        "fields": {
+            "created_at": "2025-03-13T19:14:23.312Z",
+            "updated_at": "2025-03-13T19:14:23.312Z",
+            "deleted_at": null,
+            "type": "product_color_type",
+            "name": "Red",
+            "value": "red",
+            "category": "STORE",
+            "description": "A red color choice for the product.",
+            "index": 0,
+            "is_default": false,
+            "is_active": false,
+            "remark": ""
+        }
+    },
+    {
+        "model": "core.datalookup",
+        "pk": "c47959ad-a1ef-43c9-b491-827de6b0766f",
+        "fields": {
+            "created_at": "2025-03-13T18:32:41.166Z",
+            "updated_at": "2025-03-13T18:32:41.166Z",
+            "deleted_at": null,
+            "type": "attribute_form_type",
+            "name": "checkbox",
+            "value": "checkbox",
+            "category": "STORE",
+            "description": "A checkbox type for checkbox form fields.",
+            "index": 2,
+            "is_default": false,
+            "is_active": false,
+            "remark": ""
+        }
+    },
+    {
+        "model": "core.datalookup",
+        "pk": "d92b2b77-ac8f-4c16-a6d3-f331439baf8c",
+        "fields": {
+            "created_at": "2025-03-13T18:41:59.545Z",
+            "updated_at": "2025-03-13T18:41:59.545Z",
+            "deleted_at": null,
+            "type": "attribute_field_type",
+            "name": "String",
+            "value": "str",
+            "category": "STORE",
+            "description": "A string data type for VARCHAR fields.",
+            "index": 0,
+            "is_default": true,
+            "is_active": false,
+            "remark": ""
+        }
+    },
+    {
+        "model": "core.datalookup",
+        "pk": "e287a311-88e1-4d22-8ee9-505d6efe7478",
+        "fields": {
+            "created_at": "2025-03-13T18:43:54.095Z",
+            "updated_at": "2025-03-13T18:43:54.096Z",
+            "deleted_at": null,
+            "type": "attribute_field_type",
+            "name": "Decimal",
+            "value": "decimal",
+            "category": "STORE",
+            "description": "A decimal data type for DECIMAL types.",
+            "index": 3,
+            "is_default": false,
+            "is_active": false,
+            "remark": ""
+        }
+    },
+    {
+        "model": "core.datalookup",
+        "pk": "f35d493f-1e26-4d55-8355-a403e656240a",
+        "fields": {
+            "created_at": "2025-03-13T18:43:16.263Z",
+            "updated_at": "2025-03-13T18:43:16.263Z",
+            "deleted_at": null,
+            "type": "attribute_field_type",
+            "name": "Float",
+            "value": "float",
+            "category": "STORE",
+            "description": "A float data type for FLOAT types.",
+            "index": 2,
+            "is_default": false,
+            "is_active": false,
+            "remark": ""
+        }
+    }
+]

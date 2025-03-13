@@ -1,0 +1,79 @@
+[
+    {
+        "model": "store.category",
+        "pk": "105adbda-cdf1-482d-9b47-e6d53f66a55e",
+        "fields": {
+            "created_at": "2025-03-13T16:55:37.912Z",
+            "updated_at": "2025-03-13T16:55:37.912Z",
+            "deleted_at": null,
+            "name": "Home Decor",
+            "slug": "home-decor"
+        }
+    },
+    {
+        "model": "store.category",
+        "pk": "16f6f908-cbd7-4e57-a101-f054817eb606",
+        "fields": {
+            "created_at": "2025-03-13T16:55:57.441Z",
+            "updated_at": "2025-03-13T16:55:57.442Z",
+            "deleted_at": null,
+            "name": "Pottery",
+            "slug": "pottery"
+        }
+    },
+    {
+        "model": "store.category",
+        "pk": "20679472-a924-4d8e-9caf-c202a043a609",
+        "fields": {
+            "created_at": "2025-03-13T16:56:06.046Z",
+            "updated_at": "2025-03-13T16:56:06.046Z",
+            "deleted_at": null,
+            "name": "Woodwork",
+            "slug": "woodwork"
+        }
+    },
+    {
+        "model": "store.category",
+        "pk": "31db4342-f6eb-4cc2-a075-f74b9ebb9200",
+        "fields": {
+            "created_at": "2025-03-13T16:55:23.194Z",
+            "updated_at": "2025-03-13T16:55:23.194Z",
+            "deleted_at": null,
+            "name": "Jewelry",
+            "slug": "jewelry"
+        }
+    },
+    {
+        "model": "store.category",
+        "pk": "b6a823ac-b903-40e2-a7d8-bdbba58f287b",
+        "fields": {
+            "created_at": "2025-03-13T16:55:15.638Z",
+            "updated_at": "2025-03-13T17:18:38.638Z",
+            "deleted_at": null,
+            "name": "Textiles and Clothing",
+            "slug": "textiles-and-clothing"
+        }
+    },
+    {
+        "model": "store.category",
+        "pk": "b8c31614-20f5-45a9-8837-d3e9bbd21c5a",
+        "fields": {
+            "created_at": "2025-03-13T16:56:14.682Z",
+            "updated_at": "2025-03-13T17:18:22.288Z",
+            "deleted_at": null,
+            "name": "Art and Paintings",
+            "slug": "art-and-paintings"
+        }
+    },
+    {
+        "model": "store.category",
+        "pk": "ffc12f97-d1ec-4f09-892d-bf0e3fdcad81",
+        "fields": {
+            "created_at": "2025-03-13T16:56:21.430Z",
+            "updated_at": "2025-03-13T16:56:21.430Z",
+            "deleted_at": null,
+            "name": "Food and Beverages",
+            "slug": "food-and-beverages"
+        }
+    }
+]

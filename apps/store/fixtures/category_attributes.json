@@ -1,0 +1,198 @@
+[
+    {
+        "model": "store.categoryattribute",
+        "pk": "13c1ea1d-712b-4ac3-b418-400398dff506",
+        "fields": {
+            "created_at": "2025-03-13T18:48:38.142Z",
+            "updated_at": "2025-03-13T18:48:38.142Z",
+            "deleted_at": null,
+            "category": "b6a823ac-b903-40e2-a7d8-bdbba58f287b",
+            "field_name": "Washing Instructions",
+            "field_type": "d92b2b77-ac8f-4c16-a6d3-f331439baf8c",
+            "form_type": "467b89ac-6445-47c8-81a1-4fbd0d1eda7d",
+            "required": true
+        }
+    },
+    {
+        "model": "store.categoryattribute",
+        "pk": "17208fa0-3415-467d-9454-d2dea93cf6d5",
+        "fields": {
+            "created_at": "2025-03-13T18:55:33.337Z",
+            "updated_at": "2025-03-13T18:55:33.337Z",
+            "deleted_at": null,
+            "category": "b8c31614-20f5-45a9-8837-d3e9bbd21c5a",
+            "field_name": "dimensions",
+            "field_type": "d92b2b77-ac8f-4c16-a6d3-f331439baf8c",
+            "form_type": "ad0054f9-292e-4715-8ec2-ec04e5a9efac",
+            "required": true
+        }
+    },
+    {
+        "model": "store.categoryattribute",
+        "pk": "1a317f2e-0dcb-4192-9814-9acc3172fe7c",
+        "fields": {
+            "created_at": "2025-03-13T18:50:03.005Z",
+            "updated_at": "2025-03-13T18:50:03.005Z",
+            "deleted_at": null,
+            "category": "20679472-a924-4d8e-9caf-c202a043a609",
+            "field_name": "dimensions",
+            "field_type": "d92b2b77-ac8f-4c16-a6d3-f331439baf8c",
+            "form_type": "ad0054f9-292e-4715-8ec2-ec04e5a9efac",
+            "required": true
+        }
+    },
+    {
+        "model": "store.categoryattribute",
+        "pk": "1d41c297-303a-46be-a5ef-10bb21e557d1",
+        "fields": {
+            "created_at": "2025-03-13T18:59:58.584Z",
+            "updated_at": "2025-03-13T18:59:58.584Z",
+            "deleted_at": null,
+            "category": "105adbda-cdf1-482d-9b47-e6d53f66a55e",
+            "field_name": "style",
+            "field_type": "d92b2b77-ac8f-4c16-a6d3-f331439baf8c",
+            "form_type": "ad0054f9-292e-4715-8ec2-ec04e5a9efac",
+            "required": true
+        }
+    },
+    {
+        "model": "store.categoryattribute",
+        "pk": "1d76bdc7-1be5-45c6-a20a-dd2548dbe469",
+        "fields": {
+            "created_at": "2025-03-13T18:56:17.435Z",
+            "updated_at": "2025-03-13T18:56:17.435Z",
+            "deleted_at": null,
+            "category": "b8c31614-20f5-45a9-8837-d3e9bbd21c5a",
+            "field_name": "frame type",
+            "field_type": "d92b2b77-ac8f-4c16-a6d3-f331439baf8c",
+            "form_type": "ad0054f9-292e-4715-8ec2-ec04e5a9efac",
+            "required": true
+        }
+    },
+    {
+        "model": "store.categoryattribute",
+        "pk": "2b1eab31-8e11-4d94-a97b-0ac1da3033e0",
+        "fields": {
+            "created_at": "2025-03-13T18:58:52.469Z",
+            "updated_at": "2025-03-13T18:58:52.469Z",
+            "deleted_at": null,
+            "category": "ffc12f97-d1ec-4f09-892d-bf0e3fdcad81",
+            "field_name": "shelf_life",
+            "field_type": "d92b2b77-ac8f-4c16-a6d3-f331439baf8c",
+            "form_type": "ad0054f9-292e-4715-8ec2-ec04e5a9efac",
+            "required": true
+        }
+    },
+    {
+        "model": "store.categoryattribute",
+        "pk": "3528d5c7-7e1b-4ec6-9913-43c270d28645",
+        "fields": {
+            "created_at": "2025-03-13T18:54:44.190Z",
+            "updated_at": "2025-03-13T18:54:44.190Z",
+            "deleted_at": null,
+            "category": "20679472-a924-4d8e-9caf-c202a043a609",
+            "field_name": "usage",
+            "field_type": "d92b2b77-ac8f-4c16-a6d3-f331439baf8c",
+            "form_type": "ad0054f9-292e-4715-8ec2-ec04e5a9efac",
+            "required": true
+        }
+    },
+    {
+        "model": "store.categoryattribute",
+        "pk": "630a7889-7fd8-41d8-a69a-8f7f33dd4b31",
+        "fields": {
+            "created_at": "2025-03-13T18:45:49.218Z",
+            "updated_at": "2025-03-13T18:45:49.218Z",
+            "deleted_at": null,
+            "category": "b6a823ac-b903-40e2-a7d8-bdbba58f287b",
+            "field_name": "size",
+            "field_type": "d92b2b77-ac8f-4c16-a6d3-f331439baf8c",
+            "form_type": "ad0054f9-292e-4715-8ec2-ec04e5a9efac",
+            "required": true
+        }
+    },
+    {
+        "model": "store.categoryattribute",
+        "pk": "645605b0-6a8c-4100-ae0f-f6f5b5d7e744",
+        "fields": {
+            "created_at": "2025-03-13T18:56:30.599Z",
+            "updated_at": "2025-03-13T18:56:30.599Z",
+            "deleted_at": null,
+            "category": "b8c31614-20f5-45a9-8837-d3e9bbd21c5a",
+            "field_name": "theme",
+            "field_type": "d92b2b77-ac8f-4c16-a6d3-f331439baf8c",
+            "form_type": "ad0054f9-292e-4715-8ec2-ec04e5a9efac",
+            "required": true
+        }
+    },
+    {
+        "model": "store.categoryattribute",
+        "pk": "70957948-e093-43cf-826b-23f446c75433",
+        "fields": {
+            "created_at": "2025-03-13T18:58:22.020Z",
+            "updated_at": "2025-03-13T18:58:22.020Z",
+            "deleted_at": null,
+            "category": "ffc12f97-d1ec-4f09-892d-bf0e3fdcad81",
+            "field_name": "dietary_restrictions",
+            "field_type": "d92b2b77-ac8f-4c16-a6d3-f331439baf8c",
+            "form_type": "ad0054f9-292e-4715-8ec2-ec04e5a9efac",
+            "required": true
+        }
+    },
+    {
+        "model": "store.categoryattribute",
+        "pk": "7fb545de-0bde-4c9f-afa1-493cbd94b0e6",
+        "fields": {
+            "created_at": "2025-03-13T18:57:16.221Z",
+            "updated_at": "2025-03-13T18:57:16.221Z",
+            "deleted_at": null,
+            "category": "ffc12f97-d1ec-4f09-892d-bf0e3fdcad81",
+            "field_name": "ingredients",
+            "field_type": "d92b2b77-ac8f-4c16-a6d3-f331439baf8c",
+            "form_type": "ad0054f9-292e-4715-8ec2-ec04e5a9efac",
+            "required": true
+        }
+    },
+    {
+        "model": "store.categoryattribute",
+        "pk": "8496d6f1-cd80-4d0e-8f3c-0c7eb7bbb94b",
+        "fields": {
+            "created_at": "2025-03-13T18:59:42.659Z",
+            "updated_at": "2025-03-13T18:59:42.659Z",
+            "deleted_at": null,
+            "category": "105adbda-cdf1-482d-9b47-e6d53f66a55e",
+            "field_name": "dimensions",
+            "field_type": "d92b2b77-ac8f-4c16-a6d3-f331439baf8c",
+            "form_type": "ad0054f9-292e-4715-8ec2-ec04e5a9efac",
+            "required": true
+        }
+    },
+    {
+        "model": "store.categoryattribute",
+        "pk": "aa031347-145c-495e-bcef-db2c6ebafdfb",
+        "fields": {
+            "created_at": "2025-03-13T18:55:13.800Z",
+            "updated_at": "2025-03-13T18:55:13.800Z",
+            "deleted_at": null,
+            "category": "b8c31614-20f5-45a9-8837-d3e9bbd21c5a",
+            "field_name": "medium",
+            "field_type": "d92b2b77-ac8f-4c16-a6d3-f331439baf8c",
+            "form_type": "15796830-71ff-4b53-8d0b-d24823997c12",
+            "required": true
+        }
+    },
+    {
+        "model": "store.categoryattribute",
+        "pk": "d0f9eb17-038b-4402-8007-549ee40f88cb",
+        "fields": {
+            "created_at": "2025-03-13T18:59:20.013Z",
+            "updated_at": "2025-03-13T18:59:20.013Z",
+            "deleted_at": null,
+            "category": "ffc12f97-d1ec-4f09-892d-bf0e3fdcad81",
+            "field_name": "weight",
+            "field_type": "d92b2b77-ac8f-4c16-a6d3-f331439baf8c",
+            "form_type": "ad0054f9-292e-4715-8ec2-ec04e5a9efac",
+            "required": true
+        }
+    }
+]
