@@ -1,5 +1,5 @@
 from typing import Any
-from django.db import transaction
+from django.db import IntegrityError, transaction
 from apps.store.models import Product, ProductAttribute
 
 
@@ -11,30 +11,29 @@ class PriceSetService:
     """
     @staticmethod
     @transaction.atomic()
-    def create_product(payload) -> dict[str, Any]:
-        product = payload["product"]
-        attributes = payload["attributes"]
+    def create_product(user, payload) -> dict[str, Any]:
+        product = payload.get("product", {})
+        attributes = payload.get("attributes", {})
 
-        product_instance = Product.objects.create(**product)
-
+        product_instance = Product.objects.create(artisan=user, **product)
         product_attributes = PriceSetService.create_product_attributes(
             product_instance,
             attributes
         )
-
         return {
             "product": product,
-            "updated_attributes": product_attributes
+            "attributes": product_attributes
         }
 
     @staticmethod
-    def create_product_attributes(product, attributes) -> list[Any]:
-        product_attributes = {attr.field_name: attr for attr in product.product_attributes.all()}
-
-        for field_name, field_value in attributes.items():
-            if field_name in product_attributes:
-                product_attributes[field_name].field_value = field_value
-
-        ProductAttribute.objects.bulk_create(product_attributes.values(), ["field_value"])
-
-        return list(product_attributes.values())
+    def create_product_attributes(product, attributes) -> dict[str, Any]:
+        data = [
+            ProductAttribute(field_name=field, field_value=value, product=product)
+            for field, value in attributes.items()
+        ]
+        try:
+            ProductAttribute.objects.bulk_create(data, batch_size=100)
+            return attributes
+        except IntegrityError as e:
+            print(f"Failed to create product attributes: {e}")
+            return {}
