@@ -115,9 +115,8 @@ class Product(AbstractBaseModel):
         verbose_name=_("Quantity")
     )
 
-    available_colors = models.ForeignKey(
+    available_colors = models.ManyToManyField(
         DataLookup,
-        on_delete=models.CASCADE,
         null=True,
         limit_choices_to={"type": "product_color_type"}
     )

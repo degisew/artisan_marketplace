@@ -1,8 +1,9 @@
+from typing import Any
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from apps.account.serializers import UserSerializer
 from apps.core.models import DataLookup
-from apps.core.serializers import DataTypeFormTypeResponseSerializer
+from apps.core.serializers import DataLookupSerializer, DataTypeFormTypeResponseSerializer
 from apps.store.models import (
     Product,
     ProductAttribute,
@@ -45,12 +46,6 @@ class ProductSerializer(serializers.ModelSerializer):
         queryset=Category.objects.all()
     )
 
-    available_colors = serializers.PrimaryKeyRelatedField(
-        queryset=DataLookup.objects.filter(
-            type="product_color_type"
-        )
-    )
-
     class Meta:
         model = Product
         fields = [
@@ -71,18 +66,21 @@ class ProductCreationSerializer(serializers.Serializer):
         child=serializers.JSONField()
     )
 
-    def create(self, validated_data):
+    def create(self, validated_data) -> dict[str, Any]:
         user = self.context["request"].user
-        return PriceSetService.create_product(user, validated_data)
+        validated_data["product"]["artisan"] = user
+        try:
+            return PriceSetService.create_product(validated_data)
+        except Exception as e:
+            raise e
 
-    def to_representation(self, instance):
-        product = instance.get("product")
-        attributes = instance.get("attributes")
-
-        product_data = ProductResponseSerializer(product).data
+    def to_representation(self, instance) -> dict[Any, Any]:
+        representation = super().to_representation(instance)
+        product = representation.pop("product")
+        attributes = representation.pop("attributes")
 
         return {
-            **product_data,
+            **product,
             **attributes
         }
 
@@ -100,6 +98,7 @@ class ProductAttributeResponseSerializer(serializers.ModelSerializer):
 class ProductResponseSerializer(serializers.ModelSerializer):
     category = CategoryResponseSerializer()
     artisan = UserSerializer()
+    available_colors = DataLookupSerializer(many=True)
 
     class Meta:
         model = Product
