@@ -41,20 +41,52 @@ docker-compose up --build
 
 This command will build and run the containers for:
 
-- **PostgreSQL with PostGIS** (as the database backend)
+- **PostgreSQL** (as the database backend)
 - **pgAdmin4** (to manage the PostgreSQL database)
 - **Django application** (the API server)
 
-### 4. Access the Services
+### 4. Apply Migrations
 
-- **Django API**: Open your browser and navigate to [http://localhost:8000](http://localhost:8000) to access the Django API.
+Once you start the container, you should run the following command to apply all database migrations.
+
+```bash
+docker-compose exec api python manage.py migrate
+```
+
+This command will apply migrations and setup your database tables.
+
+### 5. Populate Database with seed data
+
+I have added some seed data for product categories, user roles, data lookups, ad demo users as a starter. You can populate the database by using the following command.
+
+```bash
+docker-compose exec api python manage.py loaddata role.json
+
+docker-compose exec api python manage.py loaddata users.json
+
+docker-compose exec api python manage.py loaddata lookup.json
+
+docker-compose exec api python manage.py loaddata categories.json
+
+docker-compose exec api python manage.py loaddata category_attributes.json
+
+docker-compose exec api python manage.py loaddata product_attributes.json
+
+docker-compose exec api python manage.py loaddata products.json
+```
+
+The above commands will populate the database with some data to work with but you can always use the django admin site to create data as well.
+
+### 6. Access the Services
+
+- **Django API**: Open your browser and navigate to [http://localhost:8000/api/v1/docs](http://localhost:8000/api/v1/docs) to access the Django API.
 
 - **pgAdmin4**: Go to [http://localhost:8001](http://localhost:8001) to access pgAdmin4. Use the credentials from your `.env` file to log in.
 
   - **Email**: `PGADMIN_DEFAULT_EMAIL` from the `.env` file (e.g., `admin@example.com`)
   - **Password**: `PGADMIN_DEFAULT_PASSWORD` from the `.env` file
 
-### 5. Managing PostgreSQL in pgAdmin
+### 7. Managing PostgreSQL in pgAdmin
 
 Once you're logged in to pgAdmin4, follow these steps to add the PostgreSQL server:
 
