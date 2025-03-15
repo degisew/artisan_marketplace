@@ -14,9 +14,11 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.conf import settings
 from django.urls import include, path
+from django.conf.urls.static import static
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -24,7 +26,7 @@ from rest_framework_simplejwt.views import (
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularRedocView,
-    SpectacularSwaggerView
+    SpectacularSwaggerView,
 )
 
 api_v1_patterns = [
@@ -36,15 +38,30 @@ api_v1_patterns = [
 urlpatterns = [
     path(f"{settings.ADMIN_URL}", admin.site.urls),
     path("api/v1/", include(api_v1_patterns)),
-    path('api/v1/auth/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/v1/auth/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path("api/v1/auth/login/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
+    path("api/v1/auth/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
 ]
 
 
 if settings.SHOW_SWAGGER:
     urlpatterns += [
-        path('api/v1/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
-        path('api/v1/schema/', SpectacularAPIView.as_view(), name='schema'),
+        path(
+            "api/v1/docs/",
+            SpectacularSwaggerView.as_view(url_name="schema"),
+            name="swagger-ui",
+        ),
+        path("api/v1/schema/", SpectacularAPIView.as_view(), name="schema"),
         # Optional UI:
-        path('api/v1/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
+        path(
+            "api/v1/schema/redoc/",
+            SpectacularRedocView.as_view(url_name="schema"),
+            name="redoc",
+        ),
     ]
+
+
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.MEDIA_URL,
+        document_root=settings.MEDIA_ROOT
+    )
