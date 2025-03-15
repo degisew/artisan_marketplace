@@ -15,8 +15,24 @@ Follow these instructions to get the project up and running on your local machin
 ### 1. Clone the Repository
 
 ```bash
-git clone git@github.com:degisew/artisan_marketplace.git
+git clone https://github.com/degisew/artisan_marketplace.git
 cd artisan_marketplace
+```
+
+## Project Structure
+
+```bash
+├── apps/                 # Custom Apps collection
+├── config/               # Project Configurations
+│     └── settings/       # Project settings for dev,test, and prod environment
+├── docker
+│     └── dev/          
+│          └── Dockerfile # Django API Dockerfile for development environment
+├── docs/                 # Documentation files
+├── scripts/              # Custom scripts
+├── .env                  # Environment variables (you will create this)
+├── compose.yaml          # Docker Compose configuration file
+└── README.md             # This README file
 ```
 
 ### 2. Create a `.env` File
@@ -41,20 +57,77 @@ docker-compose up --build
 
 This command will build and run the containers for:
 
-- **PostgreSQL with PostGIS** (as the database backend)
+- **PostgreSQL** (as the database backend)
 - **pgAdmin4** (to manage the PostgreSQL database)
 - **Django application** (the API server)
 
-### 4. Access the Services
+### 4. Apply Migrations
 
-- **Django API**: Open your browser and navigate to [http://localhost:8000](http://localhost:8000) to access the Django API.
+Once you start the container, you should run the following command to apply all database migrations.
+
+```bash
+docker-compose exec api python manage.py migrate
+```
+
+This command will apply migrations and setup your database tables.
+
+### 5. Create a superuser to access the Django admin
+
+To create a super user, run the below command and follow the instructions.
+
+```bash
+docker-compose exec api python manage.py createsuperuser
+```
+
+for example, yu can use the following credentials:
+
+- email: <admin@gmail.com>
+- password: 1234
+
+Once you created the super user, you can access the admin page using [http://localhost:8000/admin](http://localhost:8000/admin) and log in with the credentials.
+
+### 6. Populate Database with seed data
+
+I have added some seed data for product categories, user roles, data lookups, and demo users as a starter. You can populate the database by using the following command.
+
+```bash
+docker-compose exec api python manage.py loaddata role.json
+
+docker-compose exec api python manage.py loaddata users.json
+
+docker-compose exec api python manage.py loaddata lookup.json
+
+docker-compose exec api python manage.py loaddata categories.json
+
+docker-compose exec api python manage.py loaddata category_attributes.json
+
+docker-compose exec api python manage.py loaddata product_attributes.json
+
+docker-compose exec api python manage.py loaddata products.json
+```
+
+The above commands will populate the database with some data to work with but you can always use the **django admin** site to create data as well.
+
+### 7. Run Tests
+
+To run the tests, use the following command:
+
+```bash
+docker-compose exec api pytest
+```
+
+This will run all tests using the pytest test runner and also displays the test coverage in your terminal.
+
+### 8. Access the Services
+
+- **Django API**: Open your browser and navigate to [http://localhost:8000/api/v1/docs](http://localhost:8000/api/v1/docs) to access the Django API.
 
 - **pgAdmin4**: Go to [http://localhost:8001](http://localhost:8001) to access pgAdmin4. Use the credentials from your `.env` file to log in.
 
   - **Email**: `PGADMIN_DEFAULT_EMAIL` from the `.env` file (e.g., `admin@example.com`)
   - **Password**: `PGADMIN_DEFAULT_PASSWORD` from the `.env` file
 
-### 5. Managing PostgreSQL in pgAdmin
+### 9. Managing PostgreSQL in pgAdmin
 
 Once you're logged in to pgAdmin4, follow these steps to add the PostgreSQL server:
 
@@ -67,22 +140,6 @@ Once you're logged in to pgAdmin4, follow these steps to add the PostgreSQL serv
    - **Password**: `POSTGRES_PASSWORD` from the `.env` file
 
 Click **Save** to add the server, and you should now be able to manage the `artisan` database from pgAdmin.
-
-## Project Structure
-
-```bash
-├── apps/                 # Custom Apps collection
-├── config/               # Project Configurations
-│     └── settings/       # Project settings for dev,test, and prod environment
-├── docker
-│     └── dev/          
-│          └── Dockerfile # Django API Dockerfile for development environment
-├── docs/                 # Documentation files
-├── scripts/              # Custom scripts
-├── .env                  # Environment variables (you will create this)
-├── compose.yaml          # Docker Compose configuration file
-└── README.md             # This README file
-```
 
 ## Useful Docker Commands
 

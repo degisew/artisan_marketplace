@@ -9,28 +9,32 @@ from django.utils.translation import gettext_lazy as _
 class Category(AbstractBaseModel):
     name = models.CharField(
         verbose_name=_("Name"),
-        max_length=100
-    )
-
-    value = models.CharField(
-        verbose_name=_("Value"),
-        max_length=100
+        max_length=100,
+        unique=True  # Ensure category names are unique
     )
 
     slug = models.SlugField(
-        max_length=100
+        verbose_name=_("Slug"),
+        max_length=100,
+        unique=True,  # Ensure slugs are unique
+        blank=True   # Allow blank for auto-generation
     )
 
     class Meta:
         verbose_name = _("Category")
         verbose_name_plural = _("Categories")
         db_table = 'category'
+        ordering = ['name']  # Default ordering by name
 
     def __str__(self) -> str:
         return self.name
 
-    def save(self, force_insert: bool, force_update: bool, using: str | None, update_fields: Iterable[str] | None) -> None:
-        self.slug = slugify(self.name)
+    def save(self, *args, **kwargs) -> None:
+        # Auto-generate slug from name if not provided
+        if not self.slug:
+            self.slug = slugify(self.name)
+        # Call the parent class's save method
+        super().save(*args, **kwargs)
 
 
 class CategoryAttribute(AbstractBaseModel):
@@ -74,8 +78,8 @@ class CategoryAttribute(AbstractBaseModel):
     required = models.BooleanField(verbose_name=_("Required"), default=True)
 
     class Meta:
-        verbose_name: str = "Product Category Attribute"
-        verbose_name_plural: str = "Product Category Attributes"
+        verbose_name: str = "Category Attribute"
+        verbose_name_plural: str = "Category Attributes"
         db_table: str = "product_category_attribute"
 
     def __str__(self) -> str:
@@ -99,7 +103,6 @@ class Product(AbstractBaseModel):
         on_delete=models.PROTECT,
         related_name="product_categories",
         verbose_name=_("Category"),
-        limit_choices_to={"tn_children_pks": ""}
     )
 
     material = models.CharField(max_length=50, blank=True, null=True)
@@ -112,9 +115,8 @@ class Product(AbstractBaseModel):
         verbose_name=_("Quantity")
     )
 
-    available_colors = models.ForeignKey(
+    available_colors = models.ManyToManyField(
         DataLookup,
-        on_delete=models.CASCADE,
         null=True,
         limit_choices_to={"type": "product_color_type"}
     )
@@ -130,9 +132,9 @@ class Product(AbstractBaseModel):
         verbose_name_plural: str = "Products"
         db_table: str = "product"
 
-    def update_price(self, price, is_for_sale):
-        self.price = price
-        self.save()
+    # def update_price(self, price, is_for_sale):
+    #     self.price = price
+    #     self.save()
 
     def __str__(self) -> str:
         return self.name

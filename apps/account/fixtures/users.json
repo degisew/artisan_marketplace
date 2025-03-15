@@ -1,0 +1,71 @@
+[
+    {
+        "model": "account.user",
+        "pk": "48690390-0463-416c-8b72-957ed0d34408",
+        "fields": {
+            "last_login": null,
+            "created_at": "2025-03-13T11:05:59.764Z",
+            "updated_at": "2025-03-13T11:06:01.172Z",
+            "deleted_at": null,
+            "full_name": "Test USer",
+            "email": "testuser@gmail.com",
+            "phone_number": "0953059022",
+            "password": "pbkdf2_sha256$870000$4XAqCs2cCYpxpyTYItP0BD$Ep1BmVJPu6kcya4lQkFLrwFFut2MErmtYI51oKyP5RU=",
+            "is_staff": false,
+            "is_superuser": false,
+            "is_active": true,
+            "is_profile_complete": false,
+            "date_joined": "2025-03-13T11:05:59.759Z",
+            "role": "4a340884-1172-413b-b9d5-45ce2393e680",
+            "state": "90dc5f51-6cf2-48be-8f2c-dc7412c2e1cd",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "account.user",
+        "pk": "a3f2214d-1816-4b4d-879c-b1bd4d64e1b4",
+        "fields": {
+            "last_login": "2025-03-13T10:40:38.586Z",
+            "created_at": "2025-03-13T10:40:28.497Z",
+            "updated_at": "2025-03-13T10:40:28.497Z",
+            "deleted_at": null,
+            "full_name": "Admin",
+            "email": "admin@gmail.com",
+            "phone_number": "",
+            "password": "pbkdf2_sha256$870000$UYykMvs5mWTnuGVnU7jr1f$3Ss9TX3Csn7s1rRZqMGMWMQVQKz/kwvjrmcSkMg+gco=",
+            "is_staff": true,
+            "is_superuser": true,
+            "is_active": true,
+            "is_profile_complete": false,
+            "date_joined": "2025-03-13T10:40:26.842Z",
+            "role": null,
+            "state": null,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "account.user",
+        "pk": "b6daf30a-821c-4d97-87e7-7c96f5655258",
+        "fields": {
+            "last_login": null,
+            "created_at": "2025-03-13T10:52:34.948Z",
+            "updated_at": "2025-03-13T11:42:24.892Z",
+            "deleted_at": null,
+            "full_name": "Degisew Mengist",
+            "email": "jegisew21@gmail.com",
+            "phone_number": "0953059021",
+            "password": "pbkdf2_sha256$870000$AfXjFNMafruezGq3j9gUpb$GPwbybzWo7tnfsBU9Ly9mi5LTscM2IM0AJOSrOVxamY=",
+            "is_staff": false,
+            "is_superuser": false,
+            "is_active": true,
+            "is_profile_complete": false,
+            "date_joined": "2025-03-13T10:52:34.947Z",
+            "role": "9d66313c-6269-414f-828b-ba9e761f1408",
+            "state": "90dc5f51-6cf2-48be-8f2c-dc7412c2e1cd",
+            "groups": [],
+            "user_permissions": []
+        }
+    }
+]
