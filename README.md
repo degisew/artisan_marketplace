@@ -15,8 +15,24 @@ Follow these instructions to get the project up and running on your local machin
 ### 1. Clone the Repository
 
 ```bash
-git clone git@github.com:degisew/artisan_marketplace.git
+git clone https://github.com/degisew/artisan_marketplace.git
 cd artisan_marketplace
+```
+
+## Project Structure
+
+```bash
+├── apps/                 # Custom Apps collection
+├── config/               # Project Configurations
+│     └── settings/       # Project settings for dev,test, and prod environment
+├── docker
+│     └── dev/          
+│          └── Dockerfile # Django API Dockerfile for development environment
+├── docs/                 # Documentation files
+├── scripts/              # Custom scripts
+├── .env                  # Environment variables (you will create this)
+├── compose.yaml          # Docker Compose configuration file
+└── README.md             # This README file
 ```
 
 ### 2. Create a `.env` File
@@ -55,9 +71,24 @@ docker-compose exec api python manage.py migrate
 
 This command will apply migrations and setup your database tables.
 
-### 5. Populate Database with seed data
+### 5. Create a superuser to access the Django admin
 
-I have added some seed data for product categories, user roles, data lookups, ad demo users as a starter. You can populate the database by using the following command.
+To create a super user, run the below command and follow the instructions.
+
+```bash
+docker-compose exec api python manage.py createsuperuser
+```
+
+for example, yu can use the following credentials:
+
+- email: <admin@gmail.com>
+- password: 1234
+
+Once you created the super user, you can access the admin page using [http://localhost:8000/admin](http://localhost:8000/admin) and log in with the credentials.
+
+### 6. Populate Database with seed data
+
+I have added some seed data for product categories, user roles, data lookups, and demo users as a starter. You can populate the database by using the following command.
 
 ```bash
 docker-compose exec api python manage.py loaddata role.json
@@ -75,9 +106,19 @@ docker-compose exec api python manage.py loaddata product_attributes.json
 docker-compose exec api python manage.py loaddata products.json
 ```
 
-The above commands will populate the database with some data to work with but you can always use the django admin site to create data as well.
+The above commands will populate the database with some data to work with but you can always use the **django admin** site to create data as well.
 
-### 6. Access the Services
+### 7. Run Tests
+
+To run the tests, use the following command:
+
+```bash
+docker-compose exec api pytest
+```
+
+This will run all tests using the pytest test runner and also displays the test coverage in your terminal.
+
+### 8. Access the Services
 
 - **Django API**: Open your browser and navigate to [http://localhost:8000/api/v1/docs](http://localhost:8000/api/v1/docs) to access the Django API.
 
@@ -86,7 +127,7 @@ The above commands will populate the database with some data to work with but yo
   - **Email**: `PGADMIN_DEFAULT_EMAIL` from the `.env` file (e.g., `admin@example.com`)
   - **Password**: `PGADMIN_DEFAULT_PASSWORD` from the `.env` file
 
-### 7. Managing PostgreSQL in pgAdmin
+### 9. Managing PostgreSQL in pgAdmin
 
 Once you're logged in to pgAdmin4, follow these steps to add the PostgreSQL server:
 
@@ -99,22 +140,6 @@ Once you're logged in to pgAdmin4, follow these steps to add the PostgreSQL serv
    - **Password**: `POSTGRES_PASSWORD` from the `.env` file
 
 Click **Save** to add the server, and you should now be able to manage the `artisan` database from pgAdmin.
-
-## Project Structure
-
-```bash
-├── apps/                 # Custom Apps collection
-├── config/               # Project Configurations
-│     └── settings/       # Project settings for dev,test, and prod environment
-├── docker
-│     └── dev/          
-│          └── Dockerfile # Django API Dockerfile for development environment
-├── docs/                 # Documentation files
-├── scripts/              # Custom scripts
-├── .env                  # Environment variables (you will create this)
-├── compose.yaml          # Docker Compose configuration file
-└── README.md             # This README file
-```
 
 ## Useful Docker Commands
 
