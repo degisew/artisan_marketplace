@@ -7,7 +7,7 @@ from apps.core.validators import (
     validate_password
 )
 from apps.account.enums import AccountState
-from apps.account.models import Role
+from apps.account.models import ArtisanProfile, Role
 from apps.core.models import DataLookup
 from apps.core.serializers import DataLookupSerializer
 
@@ -85,6 +85,42 @@ class UserSerializer(serializers.ModelSerializer):
         return UserResponseSerializer(
             instance, self.context
         ).to_representation(instance)
+
+
+class ArtisanUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = [
+            "full_name",
+            "email",
+            "phone_number"
+        ]
+
+
+class ArtisanProfileResponseSerializer(serializers.Serializer):
+    """A custom class used for swagger schema generation.
+    """
+    full_name = serializers.CharField()
+    email = serializers.CharField()
+    phone_number = serializers.CharField()
+    shop_name = serializers.CharField()
+    profile_picture = serializers.ImageField()
+    location = serializers.CharField()
+    bio = serializers.CharField()
+
+
+class ArtisanProfileSerializer(serializers.ModelSerializer):
+    user = ArtisanUserSerializer()
+
+    class Meta:
+        model = ArtisanProfile
+        fields = [
+            'user',
+            'shop_name',
+            'profile_picture',
+            'location',
+            'bio'
+        ]
 
 
 class PasswordChangeSerializer(serializers.Serializer):

@@ -8,7 +8,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import Group
 
 from apps.account.forms import UserChangeForm, UserCreationForm
-from apps.account.models import Role, User, UserPreferences
+from apps.account.models import ArtisanProfile, Role, User, UserPreferences
 
 
 @admin.register(User)
@@ -57,6 +57,24 @@ class UserAdmin(BaseUserAdmin):
     readonly_fields = ["created_at", "updated_at"]
     filter_horizontal = []
 
+
+@admin.register(ArtisanProfile)
+class ArtisanProfileAdmin(admin.ModelAdmin):
+    list_display = ["user", "shop_name", "location", "profile_picture", "bio"]
+    list_filter = ["user"]
+    fieldsets = [
+        (None, {"fields": ["user", "shop_name", "profile_picture", "bio", "location"]})
+    ]
+
+    add_fieldsets = [
+        (
+            None,
+            {
+                "classes": ["wide"],
+                "fields":  ["user", "shop_name", "location", "profile_picture", "bio"],
+            },
+        )
+    ]
 
 @admin.register(Role)
 class RoleAdmin(admin.ModelAdmin):
