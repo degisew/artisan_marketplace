@@ -2,7 +2,15 @@
 from django_filters import FilterSet
 from django_filters import rest_framework as filters
 
-from apps.store.models import Product, CategoryAttribute
+from apps.store.models import Category, Product, CategoryAttribute
+
+
+class CategoryFilter(FilterSet):
+    name = filters.CharFilter(field_name='name')
+
+    class Meta:
+        model = Category
+        fields = []
 
 
 class CategoryAttributeFilter(FilterSet):

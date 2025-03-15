@@ -9,8 +9,16 @@ from apps.store.models import (
     Category,
     CategoryAttribute
 )
-from apps.store.filters import CategoryAttributeFilter, ProductFilter
-from rest_framework.permissions import AllowAny
+from apps.store.filters import (
+    CategoryFilter,
+    CategoryAttributeFilter,
+    ProductFilter,
+)
+from apps.store.permissions import (
+    CategoryAccessPolicy,
+    CategoryAttributeAccessPolicy,
+    ProductAccessPolicy
+)
 from apps.store.serializers import (
     CategoryResponseSerializer,
     ProductResponseSerializer,
@@ -20,14 +28,16 @@ from apps.store.serializers import (
 
 
 class CategoryViewSet(AbstractModelViewSet):
-    permission_classes = [AllowAny]
+    permission_classes = [CategoryAccessPolicy]
     http_method_names = ["get"]
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = CategoryFilter
     serializer_class = CategoryResponseSerializer
     queryset = Category.objects.all()
 
 
 class CategoryAttributeViewSet(AbstractModelViewSet):
-    permission_classes = [AllowAny]
+    permission_classes = [CategoryAttributeAccessPolicy]
     http_method_names = ["get"]
     filter_backends = [DjangoFilterBackend]
     filterset_class = CategoryAttributeFilter
@@ -36,7 +46,7 @@ class CategoryAttributeViewSet(AbstractModelViewSet):
 
 
 class ProductViewSet(AbstractModelViewSet):
-    permission_classes = [AllowAny]
+    permission_classes = [ProductAccessPolicy]
     serializer_class = ProductResponseSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = ProductFilter
@@ -45,6 +55,6 @@ class ProductViewSet(AbstractModelViewSet):
 
 
 class CreateProductViewSet(CreateModelMixin, GenericViewSet):
-    permission_classes = [AllowAny]
+    permission_classes = [ProductAccessPolicy]
     serializer_class = ProductCreationSerializer
     queryset = None
