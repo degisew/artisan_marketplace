@@ -1,4 +1,4 @@
-# Product Database Design Documentation
+# Database Design Documentation
 
 ## 1. Overview
 
