@@ -1,4 +1,4 @@
-# Artisan Marketplace
+# Artisan Marketplace 🛍️
 **Artisan Marketplace** is a Django-powered platform designed to connect local artisans with buyers in their community. The goal is to create a digital marketplace where artisans can showcase and sell their handmade products, making it easier for customers to discover and support local craftsmanship.
 ## Prerequisites
 
